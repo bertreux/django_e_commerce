@@ -1,5 +1,5 @@
 from django.http import HttpResponseRedirect
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
 from django.contrib.auth import authenticate, login
 from .models import Panier, Produit
 from .forms import LoginForm
@@ -57,9 +57,20 @@ def inscription(request):
         return render(request, "e_commerce/inscription.html", context)
 
 def panier(request):
-    return render(request, "e_commerce/panier.html")
+    data = Panier.objects.filter(user_id=request.user.id).order_by('produit_id')
+    total = 0
+    for i in data:
+        total += i.produit.prix
+    context = {'panier': data,
+               'total': total
+               }
+    return render(request, "e_commerce/panier.html", context)
 
 def achat(request, pk):
-    print('test')
     Panier.objects.create(produit_id=pk, user_id=request.user.id)
     return HttpResponseRedirect('/e_commerce/')
+
+def enleverProduit(request, pk):
+    data = Panier.objects.filter(id=pk)
+    data.delete()
+    return HttpResponseRedirect('/e_commerce/panier/')

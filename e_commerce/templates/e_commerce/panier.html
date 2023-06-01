@@ -13,15 +13,18 @@
                         </tr>
                     </thead>
                     <tbody>
+                    {% for paniers in panier %}
                             <tr>
-                                <td>test</td>
-                                <td>test</td>
-                                <td>test €</td>
+                                <td>{{ paniers.produit.id }}</td>
+                                <td>{{ paniers.produit.titre }}</td>
+                                <td>{{ paniers.produit.prix }} €</td>
                                 <td>
-                                    <button class="btn btn-danger">supprimer</button>
+                                    <a href="{% url 'e_commerce:enleverProduit' paniers.id %}" class="btn btn-danger">supprimer</a>
                                 </td>
                             </tr>
+                    {% endfor %}
                     </tbody>
                 </table>
+    <h3>Total = {{ total }} €</h3>
     </body>
 {% endblock %}
