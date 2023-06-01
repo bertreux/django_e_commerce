@@ -1,0 +1,24 @@
+{% extends 'e_commerce/menu.html' %}
+{% block content %}
+    <body>
+        <div class="row">
+            <h1>Catalogue</h1>
+            {% for produits in produit %}
+                <article class="col-4 mb-4">
+                    <div class="card">
+                        <h2 class="card-header">
+                            {{ produits.titre }}
+                        </h2>
+                        <div class="card-body article_contenu">
+                            {{ produits.contenu }}
+                        </div>
+                        <footer class="card-footer d-flex justify-content-between">
+                            <button class="btn btn-dark">Ajouter au panier</button>
+                            <h5 class="mt-2">{{ produits.prix }} €</h5>
+                        </footer>
+                    </div>
+                </article>
+            {% endfor %}
+        </div>
+    </body>
+{% endblock %}

@@ -1,0 +1,13 @@
+{% extends 'e_commerce/menu.html' %}
+{% block content %}
+    <body>
+        <h1>Vous inscrire</h1>
+        <p>Veuilllez compléter le formulaire pour vous inscrire:</p>
+            <form class="px-3" method="POST">
+                <input type="email" class="form-control mb-3" placeholder="votre@email.fr"/>
+                <input type="password" class="form-control mb-3" placeholder="votre mot de passe"/>
+                <input type="password" class="form-control mb-3" placeholder="Confirmer votre mot de passe"/>
+                <input type="submit" class="btn btn-dark" value="inscription" />
+            </form>
+    </body>
+{% endblock %}

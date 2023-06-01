@@ -1,0 +1,19 @@
+{% extends 'e_commerce/menu.html' %}
+{% block content %}
+<body>
+    <h1>Vous connecter</h1>
+    <p>Veuilllez compléter le formulaire pour vous connecter:</p>
+        <form method="POST">
+            {% csrf_token %}
+            {% if error_message %}
+                <p>{{ error_message }}</p>
+            {% endif %}
+            {{ form.as_p }}
+            <button class="btn btn-dark" type="submit">connexion</button>
+        </form>
+    <hr>
+    <h1>Vous inscrire</h1>
+    <p>Cliquer sur le bouton suivant pour aller a la page d'inscription:</p>
+    <button class="btn btn-dark"><a class="noLink" href="{% url 'e_commerce:inscription' %}">inscription</a></button>
+</body>
+{% endblock %}
