@@ -58,3 +58,8 @@ def inscription(request):
 
 def panier(request):
     return render(request, "e_commerce/panier.html")
+
+def achat(request, pk):
+    print('test')
+    Panier.objects.create(produit_id=pk, user_id=request.user.id)
+    return HttpResponseRedirect('/e_commerce/')

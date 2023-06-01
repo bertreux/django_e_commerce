@@ -14,7 +14,7 @@
                         </div>
                         <footer class="card-footer d-flex justify-content-between">
                             {% if user.is_authenticated %}
-                                <button class="btn btn-dark">Ajouter au panier</button>
+                                <a href="{% url 'e_commerce:achat' produits.id %}" class="btn btn-dark">Ajouter au panier</a>
                             {% else %}
                                 <p>Connecter vous pour pouvoir acheter</p>
                             {% endif %}
