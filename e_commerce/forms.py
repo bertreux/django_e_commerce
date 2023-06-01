@@ -1,10 +1,10 @@
 from django import forms
 
 class LoginForm(forms.Form):
-    username = forms.CharField()
-    password = forms.CharField(widget=forms.PasswordInput)
+    username = forms.CharField(widget=forms.TextInput(attrs={'class': 'form-control mb-3 mt-2'}))
+    password = forms.CharField(widget=forms.PasswordInput(attrs={'class': 'form-control mb-3 mt-2'}))
 
 class RegisterForm(forms.Form):
-    username = forms.CharField()
-    password = forms.CharField(widget=forms.PasswordInput)
-    password2 = forms.CharField(widget=forms.PasswordInput, label='Confirmer le mot de passe')
+    username = forms.CharField(widget=forms.TextInput(attrs={'class': 'form-control mb-3 mt-2'}))
+    password = forms.CharField(widget=forms.PasswordInput(attrs={'class': 'form-control mb-3 mt-2'}))
+    password2 = forms.CharField(widget=forms.PasswordInput(attrs={'class': 'form-control mb-3 mt-2'}), label='Confirmer le mot de passe')

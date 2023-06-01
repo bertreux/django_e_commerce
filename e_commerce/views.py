@@ -1,12 +1,11 @@
 from django.http import HttpResponseRedirect
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import render
 from django.contrib.auth import authenticate, login
 from .models import Panier, Produit
 from .forms import LoginForm
 from .forms import RegisterForm
 from django.contrib.auth import logout
 from django.contrib.auth.models import User
-
 
 def index(request):
     data = Produit.objects.all()
@@ -62,8 +61,7 @@ def panier(request):
     for i in data:
         total += i.produit.prix
     context = {'panier': data,
-               'total': total
-               }
+               'total': total}
     return render(request, "e_commerce/panier.html", context)
 
 def achat(request, pk):
