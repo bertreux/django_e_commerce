@@ -21,11 +21,19 @@
                     <a href="{% url 'e_commerce:panier' %}">Panier</a>
                 </li>
             </ul>
-            <ul class="navbar-nav ms-auto">
+            {% if user.is_authenticated %}
+                <ul class="navbar-nav ms-auto">
                 <li class="navbar-item ">
-                    <a href="{% url 'e_commerce:connexion' %}">Connexion</a>
+                    <a href="{% url 'e_commerce:logout_view' %}">Déconnexion</a>
                 </li>
-            </ul>
+                </ul>
+            {% else %}
+                <ul class="navbar-nav ms-auto">
+                    <li class="navbar-item ">
+                        <a href="{% url 'e_commerce:connexion' %}">Connexion</a>
+                    </li>
+                </ul>
+            {% endif %}
         </nav>
     </div>
 </head>

@@ -1,5 +1,10 @@
 from django import forms
 
 class LoginForm(forms.Form):
-    email = forms.EmailField()
+    username = forms.CharField()
     password = forms.CharField(widget=forms.PasswordInput)
+
+class RegisterForm(forms.Form):
+    username = forms.CharField()
+    password = forms.CharField(widget=forms.PasswordInput)
+    password2 = forms.CharField(widget=forms.PasswordInput, label='Confirmer le mot de passe')
