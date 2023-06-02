@@ -18,9 +18,7 @@ def connexion(request):
         user = authenticate(username=username, password=password)
         if user is not None:
             login(request, user)
-            data = Produit.objects.all()
-            produit = {'produit': data}
-            return render(request, "e_commerce/index.html", produit)
+            return HttpResponseRedirect('/e_commerce/')
         else:
             form = LoginForm()
             error_message = 'Identifiants invalides'
@@ -33,9 +31,7 @@ def connexion(request):
 
 def logout_view(request):
     logout(request)
-    data = Produit.objects.all()
-    produit = {'produit': data}
-    return render(request, "e_commerce/index.html", produit)
+    return HttpResponseRedirect('/e_commerce/')
 
 def inscription(request):
     if request.method == 'POST':
